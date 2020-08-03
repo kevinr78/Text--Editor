@@ -1,0 +1,116 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+nav {
+  height: 8vh;
+  background-color: #1a535c;
+  max-width: 100%;
+  text-align: center;
+}
+.nav-links {
+  margin: 0px;
+  padding-top: 10px;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+.nav-links a {
+  text-decoration: none;
+}
+.btnContainer {
+  height: 32px;
+  width: 290px;
+  border-radius: 5px;
+  justify-content: center;
+  background-color: white;
+}
+
+.btnTab {
+  padding: 5px 3px 0px;
+  margin-top: 2px;
+  display: inline-block;
+  border-right: 1px solid grey;
+  height: 24px;
+  cursor: pointer;
+
+  font-weight: bold;
+  color: #1a535c;
+}
+.Obtn {
+  border-right: none;
+}
+#title > li > a > h2 {
+  position: relative;
+  bottom: 15px;
+  color: #f7fff7;
+}
+.logoutBtn > li > button {
+  position: relative;
+  top: 5px;
+  width: 100px;
+  height: 30px;
+  outline: none;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #1a535c;
+  margin-right: 20px;
+}
+.logoutBtn > li > button:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.btnTab:hover,
+.active {
+  background-color: lightblue;
+}
+.nav-links > div > a > h2 {
+  color: red;
+}
+
+#bodyContainer {
+  display: flex;
+  height: 640px;
+}
+#bodyContainer > div {
+  border: 1px solid grey;
+}
+.Panels {
+  width: 100%;
+}
+textarea {
+  resize: none;
+  height: 575px;
+  width: 90%;
+  border-color: none;
+  outline: none;
+  background: url(http://i.imgur.com/2cOaJ.png);
+  background-attachment: local;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  padding-top: 10px;
+  border-color: #ccc;
+}
+span {
+  width: 50px;
+  display: block;
+  margin: 10px;
+  padding-left: 5px;
+  border: 2px solid gray;
+}
+.hidden {
+  display: none;
+}
+
+/*
+@media screen and (max-width: 1200px) {
+  #bodyContainer {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+  }
+}
+*/

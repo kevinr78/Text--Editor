@@ -52,7 +52,7 @@
     </nav>
 
     <div id="bodyContainer">
-      <div class="Panels" id="HtmlPanel">
+      <div class="Panels" id="HtmlPanel ">
         <span>HTML</span>
         <textarea>Html</textarea>
       </div>
@@ -65,31 +65,30 @@
         <textarea>Js</textarea>
       </div>
 
-      <div class="Panels" id="OutputPanel">
-        <span>Output</span>
-      </div>
+      <div class="Panels" id="OutputPanel"><span>Output</span></div>
     </div>
 
     <script type="text/javascript">
       function toggles(x) {
-        var PanelName = x.id + "Panels";
+        var PanelName = x.id + "Panel";
         x.classList.toggle("active");
         var mainPanel = document.getElementById(PanelName);
-        /*  mainPanel.classList.toggle("hidden");*/
-        document.getElementById(x.id + "Panel").classList.toggle("hidden");
+
+        document.getElementById(PanelName).classList.toggle("hidden");
       }
 
-      /*   var input = document.getElementById("text");
+      var textareaContent = document.querySelector("textarea");
 
       var UpdateValue = function (event) {
         var output = document.getElementById("OutputPanel");
-        var text = input.value;
+        var text = textareaContent.value;
         output.innerHTML = text;
       };
 
-      input.addEventListener("change", UpdateValue, false);
-      input.addEventListener("keyup", UpdateValue, false);
-      input.addEventListener("paste", UpdateValue, false); */
+      textareaContent.addEventListener("change", UpdateValue, false);
+      textareaContent.addEventListener("keyup", UpdateValue, false);
+      textareaContent.addEventListener("paste", UpdateValue, false);
+      textareaContent.addEventListener("keydown", UpdateValue, false);
     </script>
   </body>
 </html>

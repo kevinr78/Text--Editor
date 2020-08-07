@@ -52,20 +52,20 @@
     </nav>
 
     <div id="bodyContainer">
-      <div class="Panels" id="HtmlPanel ">
+      <div class="Panels">
         <span>HTML</span>
-        <textarea>Html</textarea>
+        <textarea id="HtmlTextarea">Html</textarea>
       </div>
       <div class="Panels hidden" id="CssPanel">
         <span style="display: block;">CSS</span>
-        <textarea>Css</textarea>
+        <textarea id="CssTextarea">Css</textarea>
       </div>
       <div class="Panels hidden" id="JsPanel">
         <span style="display: block;">JavaScript</span>
-        <textarea>Js</textarea>
+        <textarea id="JsTextarea">Js</textarea>
       </div>
 
-      <div class="Panels" id="OutputPanel"><span>Output</span></div>
+      <iframe class="Panels" id="OutputPanel"><span>Output</span></iframe>
     </div>
 
     <script type="text/javascript">
@@ -73,22 +73,31 @@
         var PanelName = x.id + "Panel";
         x.classList.toggle("active");
         var mainPanel = document.getElementById(PanelName);
-
         document.getElementById(PanelName).classList.toggle("hidden");
       }
 
-      var textareaContent = document.querySelector("textarea");
+      function UpdateValue() {
+        var htmlContent = document.getElementById("HtmlTextarea").value;
+        var CssContent = document.getElementById("CssTextarea").value;
 
-      var UpdateValue = function (event) {
-        var output = document.getElementById("OutputPanel");
-        var text = textareaContent.value;
-        output.innerHTML = text;
-      };
+        var frameObj = document.getElementById("OutputPanel");
+        var JsContent = document
+          .getElementById("OutputPanel")
+          .contentWindow.eval(document.getElementById("JsPanel").value);
 
-      textareaContent.addEventListener("change", UpdateValue, false);
-      textareaContent.addEventListener("keyup", UpdateValue, false);
-      textareaContent.addEventListener("paste", UpdateValue, false);
-      textareaContent.addEventListener("keydown", UpdateValue, false);
+        var frameContent = (frameObj.contentWindow.document.body.innerHTML =
+          "<html><head><style type='text/css'>" +
+          CssContent +
+          "</style></head><body>" +
+          htmlContent +
+          "</body></html>");
+      }
+      document.querySelectorAll("textarea").forEach((item) => {
+        item.addEventListener("change", UpdateValue, false);
+        item.addEventListener("keyup", UpdateValue, false);
+        item.addEventListener("paste", UpdateValue, false);
+        item.addEventListener("keydown", UpdateValue, false);
+      });
     </script>
   </body>
 </html>

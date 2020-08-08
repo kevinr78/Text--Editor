@@ -26,16 +26,22 @@
         </div>
 
         <div class="btnContainer" style="margin: 0 auto;">
-          <div onclick="toggles(this)" id="Html" class="btnTab Hbtn active">
+          <div onclick="togglePanel(this)" id="Html" class="active btnTab Hbtn">
             HTML
           </div>
-          <div onclick="toggles(this)" id="Css" class="btnTab Cbtn">CSS</div>
+          <div onclick="togglePanel(this)" id="Css" class="btnTab Cbtn">
+            CSS
+          </div>
 
-          <div onclick="toggles(this)" id="Js" class="btnTab Jbtn">
+          <div onclick="togglePanel(this)" id="Js" class="btnTab Jbtn">
             JavaScript
           </div>
 
-          <div onclick="toggles(this)" id="Output" class="btnTab Obtn active">
+          <div
+            onclick="togglePanel(this)"
+            id="Output"
+            class="active btnTab Obtn"
+          >
             OUTPUT
           </div>
         </div>
@@ -52,52 +58,48 @@
     </nav>
 
     <div id="bodyContainer">
-      <div class="Panels">
-        <span>HTML</span>
-        <textarea id="HtmlTextarea">Html</textarea>
+      <div class="Panels" id="HtmlPanel">
+        <textarea id="html" placeholder="HTML"></textarea>
       </div>
       <div class="Panels hidden" id="CssPanel">
-        <span style="display: block;">CSS</span>
-        <textarea id="CssTextarea">Css</textarea>
+        <textarea id="css" placeholder="CSS"></textarea>
       </div>
       <div class="Panels hidden" id="JsPanel">
-        <span style="display: block;">JavaScript</span>
-        <textarea id="JsTextarea">Js</textarea>
+        <textarea id="js" placeholder="JavaScript"></textarea>
       </div>
-
-      <iframe class="Panels" id="OutputPanel"><span>Output</span></iframe>
+      <iframe class="Panels" id="OutputPanel" placeholder="Output"></iframe>
     </div>
 
     <script type="text/javascript">
-      function toggles(x) {
+      function togglePanel(x) {
         var PanelName = x.id + "Panel";
         x.classList.toggle("active");
         var mainPanel = document.getElementById(PanelName);
-        document.getElementById(PanelName).classList.toggle("hidden");
+        mainPanel.classList.toggle("hidden");
       }
 
-      function UpdateValue() {
-        var htmlContent = document.getElementById("HtmlTextarea").value;
-        var CssContent = document.getElementById("CssTextarea").value;
-
-        var frameObj = document.getElementById("OutputPanel");
-        var JsContent = document
-          .getElementById("OutputPanel")
-          .contentWindow.eval(document.getElementById("JsPanel").value);
-
-        var frameContent = (frameObj.contentWindow.document.body.innerHTML =
-          "<html><head><style type='text/css'>" +
-          CssContent +
-          "</style></head><body>" +
-          htmlContent +
-          "</body></html>");
+      function compile() {
+        var html = document.getElementById("html");
+        var css = document.getElementById("css");
+        var js = document.getElementById("js");
+        var code = document.getElementById("OutputPanel").contentWindow
+          .document;
+        document.body.onkeyup = function () {
+          code.open();
+          code.writeln(
+            html.value +
+              "<style>" +
+              css.value +
+              "</style>" +
+              "<script>" +
+              js.value +
+              "<\/script>"
+          );
+          code.close();
+        };
       }
-      document.querySelectorAll("textarea").forEach((item) => {
-        item.addEventListener("change", UpdateValue, false);
-        item.addEventListener("keyup", UpdateValue, false);
-        item.addEventListener("paste", UpdateValue, false);
-        item.addEventListener("keydown", UpdateValue, false);
-      });
+
+      compile();
     </script>
   </body>
 </html>

@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>Welcome!!!</title>
+  </head>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <script
+    src="https://kit.fontawesome.com/0000f17b81.js"
+    crossorigin="anonymous"
+  ></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="HPstyles.css" />
+
+  <body>
+    <div id="mainContainer">
+      <div id="RegisterForm">
+        <h1 style="text-align: center;">Welcome</h1>
+
+        <h3 style="text-align: center;">Let's get coding!!</h3>
+        <h3 style="text-align: center;">Click below to login</h3>
+        <button id="LoginBtn">Login</button>
+      </div>
+      <div id="Signinform">
+        <h1>Create Account</h1>
+        <form>
+          <div class="input-field">
+            <input type="text" id="name" required autocomplete="off" />
+            <label for="name" class="label-name">
+              <span class="content-name">Enter name</span>
+            </label>
+          </div>
+          <div class="input-field">
+            <input type="email" id="email" required autocomplete="off" />
+            <label for="email" class="label-name">
+              <span class="content-name">Enter E-mail</span>
+            </label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="pass" required />
+            <label for="pass" class="label-name">
+              <span class="content-name">Enter Password</span>
+            </label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="pass" required />
+            <label for="pass" class="label-name">
+              <span class="content-name">Confirm Password</span>
+            </label>
+          </div>
+          <button>Sign up</button>
+        </form>
+      </div>
+      <div id="Loginform">
+        <form style="display: none;">
+          <div class="input-field">
+            <input type="email" id="email" required autocomplete="off" />
+            <label for="email" class="label-name">
+              <span class="content-name">Enter E-mail</span>
+            </label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="pass" required />
+            <label for="pass" class="label-name">
+              <span class="content-name">Enter Password</span>
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      document
+        .getElementById("LoginBtn")
+        .addEventListener("click", function () {
+          document.getElementById("Loginform").style.display = "block";
+        });
+    </script>
+  </body>
+</html>

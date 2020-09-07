@@ -5,6 +5,7 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
 nav {
   height: 8vh;
   background-color: #1a535c;
@@ -36,7 +37,6 @@ nav {
   border-right: 1px solid grey;
   height: 24px;
   cursor: pointer;
-
   font-weight: bold;
   color: #1a535c;
 }
@@ -47,21 +47,6 @@ nav {
   position: relative;
   bottom: 15px;
   color: #f7fff7;
-}
-.logoutBtn > li > button {
-  position: relative;
-  top: 5px;
-  width: 100px;
-  height: 30px;
-  outline: none;
-  border: 2px solid white;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #1a535c;
-  margin-right: 20px;
-}
-.logoutBtn > li > button:hover {
-  transform: scale(1.2, 1.2);
 }
 
 .btnTab:hover,
@@ -83,34 +68,65 @@ nav {
   width: 100%;
 }
 textarea {
-  resize: none;
-  height: 575px;
-  width: 90%;
-  border-color: none;
-  outline: none;
   background: url(http://i.imgur.com/2cOaJ.png);
   background-attachment: local;
   background-repeat: no-repeat;
   padding-left: 35px;
-  padding-top: 10px;
+  padding-top: 12px;
   border-color: #ccc;
+  margin: 8px;
+  resize: none;
+  height: 610px;
+  width: 85%;
+  outline: none;
 }
-span {
-  width: 50px;
-  display: block;
-  margin: 10px;
-  padding-left: 5px;
-  border: 2px solid gray;
-}
+
 .hidden {
   display: none;
 }
+.dropdown {
+  position: relative;
+  right: 100px;
+  height: 100px;
+}
+.dropdown button {
+  width: 80px;
+  height: 32px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  border: none;
+  color: #1a535c;
+  font-weight: bold;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  border: 3px solid #1a535c;
+}
 
-/*
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
 @media screen and (max-width: 1200px) {
-  #bodyContainer {
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
+  .Panels {
+    width: 50%;
   }
 }
-*/

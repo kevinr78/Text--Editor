@@ -19,13 +19,13 @@
   <body>
     <nav>
       <ul class="nav-links">
-        <div id="title" style="margin-right: auto;">
+        <div id="title" style="margin-right: auto">
           <li>
             <a href="#"><h2>Web Compiler</h2> </a>
           </li>
         </div>
 
-        <div class="btnContainer" style="margin: 0 auto;">
+        <div class="btnContainer" style="margin: 0 auto">
           <div onclick="togglePanel(this)" id="Html" class="active btnTab Hbtn">
             HTML
           </div>
@@ -46,13 +46,18 @@
           </div>
         </div>
 
-        <div class="logoutBtn" style="margin-left: auto;">
-          <li>
-            <button type="button">
-              <i style="margin-right: 3px;" class="fas fa-users fa-lg"></i
-              >Logout
-            </button>
-          </li>
+        <div class="dropdown" style="margin-left: auto">
+          <button type="button">
+            <i
+              style="margin-right: 3px; color: #1a535c"
+              class="fas fa-bars fa-lg"
+            ></i>
+            Menu
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Save Code</a>
+            <a href="#">Logout</a>
+          </div>
         </div>
       </ul>
     </nav>
@@ -100,6 +105,27 @@
       }
 
       compile();
+      /*remark is text area id
+ function  myfunction() {
+if(document.getElementById('remark').value === ''){
+document.getElementById('remark').value +=1;
+}
+};
+
+document.getElementById("remark").addEventListener('keyup',function(event){
+
+
+if(event.which == '13'){
+var elm = document.getElementById("remark");
+var lines = elm.value.split('\n');
+var numbers = "";
+for(var i=0; i<lines.length; i++)
+{
+numbers = i+1;}
+document.getElementById('remark').value +=numbers;
+}
+
+});*/
     </script>
   </body>
 </html>

@@ -41,15 +41,6 @@ h1 {
   margin: 50px 200px;
 }
 
-button {
-  width: 100px;
-  height: 35px;
-  border-radius: 10px;
-}
-form button {
-  margin-left: 240px;
-}
-
 #mainContainer {
   display: flex;
   margin: 50px auto;
@@ -59,7 +50,7 @@ form button {
 
   border-radius: 10px;
 }
-#RegisterForm {
+#Content_Panel {
   width: 250px;
   height: 100%;
   background-color: #00b4d8;
@@ -77,7 +68,30 @@ form button {
 #Loginform {
   flex-direction: column;
   width: 550px;
+  height: 300px;
 }
+#panel_LoginBtn,
+#panel_SignInBtn {
+  margin-left: 100px;
+  height: 40px;
+  width: 60px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: whitesmoke;
+}
+#form_SignInBtn,
+#form_LoginBtn {
+  position: relative;
+  left: 250px;
+  border: none;
+  outline: none;
+  background-color: whitesmoke;
+  height: 40px;
+  width: 60px;
+  border-radius: 8px;
+}
+
 #Loginform {
   position: relative;
   top: 80px;
@@ -86,9 +100,6 @@ form button {
   display: none;
 }
 
-#RegisterForm button {
-  margin-left: 100px;
-}
 .input-field {
   width: 300px;
   margin: 20px auto;
@@ -126,6 +137,7 @@ form button {
   transform: translateX(-100%);
   transition: all 0.8s ease;
 }
+
 .content-name,
 i {
   position: absolute;
@@ -141,7 +153,8 @@ i {
 }
 .input-field input:focus + .label-name .content-name,
 .input-field input:valid + .label-name .content-name,
-.input-field input:focus + .label-name i {
+.input-field input:focus + .label-name i,
+.input-field input:valid + .label-name i {
   transform: translateY(-100%);
   font-size: 14px;
 }
@@ -154,59 +167,33 @@ i {
   position: relative;
   top: 200px;
 }
-#LoginBtn,
-#signin_btn {
-  border: none;
-  outline: none;
-  position: relative;
-  right: 25px;
-  background-color: whitesmoke;
-}
+
 .login_checkbox {
   position: relative;
   left: 180px;
   margin-bottom: 20px;
 }
 
-#LoginBtn:hover,
-#signin_btn:hover {
+#form_SignInBtn:hover,
+#form_LoginBtn:hover,
+#panel_LoginBtn:hover,
+#panel_SignInBtn:hover {
   background: #00b4d8;
   color: white;
   font-weight: bold;
   letter-spacing: 1px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
   box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
-  transition: all 0.4s ease 0s;
+  transition: all 0.6s ease 0s;
+}
+.err {
+  color: red;
+  position: relative;
+  left: 120px;
 }
 
-@media screen and (max-width: 800px) {
-  #mainContainer {
-    display: flex;
-    max-width: 600px;
-  }
-  #SignIn_form,
-  #Loginform {
-    position: relative;
-    right: 90px;
-  }
-
-  .input-field {
-    width: 200px;
-  }
-
-  #LoginBtn:hover,
-  #signin_btn:hover {
-    background: #00b4d8;
-    color: white;
-    font-weight: bold;
-    letter-spacing: 1px;
-    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-    box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
-    transition: all 0.4s ease 0s;
-  }
-  #LoginBtn,
-  #signin_btn {
-    position: relative;
-    right: 30px;
+@media screen and (min-width: 400px) {
+  body {
+    display: none;
   }
 }

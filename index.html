@@ -17,7 +17,7 @@
       
       <div id="signin_form" >
         <h1>Sign In</h1>
-        <form method="POST">
+        <form id="Sform" onsubmit="event.preventDefault(); validate()  ">
           <p>
             <label for="name">Name</label>
             <div class="input_bar">
@@ -27,20 +27,26 @@
                 id="name"
                 name="name"
                 placeholder="Enter your name"
+                autocomplete="off"
               />
             </div>
+            <span id="name-err"></span>
           </p>
           <p>
             <label for="email">Email</label>
             <div class="input_bar">
               <i class="fa fa-envelope"></i>
               <input
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 placeholder="Enter your email"
+                onkeydown="emailValidation()"
+                autocomplete="off"
               />
             </div>
+            <span class="error" id="email-err"></span>
+
           </p>
           <p>
             <label for="password">Password</label>
@@ -49,12 +55,17 @@
               <input
                 type="text"
                 id="password"
-                name=""password
-                placeholder="Enter your password"
+                name="password"
+                placeholder="Enter a password"
+                autocomplete="off"
+                onkeydown="passValidation()"
+
               />
             </div>
+            <span class="error" id="pass-err"></span>
+
           </p>
-          <input type="submit" id="login-btn" class="buttons" value="Sign In">
+          <input type="submit" id="login-btn" class="buttons" value="Sign In" >
         </form>
        <div class="toggle-form-container"> 
          <span> Not a member?</span>
@@ -64,17 +75,17 @@
 
       <div id="login_form" class="display">
         <h1>Login</h1>
-        <form method="POST">
+        <form method="POST" >
           <p>
             <label for="login-email">Email</label>
             <div class="input_bar">
               <i class="fa fa-envelope"></i>
               <input
-                type="email"
+                type="text"
                 id="login-email"
                 name="login-email"
                 placeholder="Enter your email"
-                autofocus
+                
               />
             </div>
           </p>
@@ -86,7 +97,7 @@
                 type="password"
                 id="login-password"
                 name="login-password"
-                placeholder="Enter your Password"
+                placeholder="Enter Password "
               />
             </div>
           </p>
@@ -119,6 +130,71 @@
          loginForm.classList.toggle("display")
         }
       }
+function validate(){
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var pass = document.getElementById("password").value;
+     
+     if(name=="" || email=="" || pass==""){
+       alert("Please fill all the fields")
+      }else{
+       alert("succesfull")
+      }
+} 
+ function emailValidation(){
+      var signinForm = document.getElementById("Sform");
+      var signinEmail=document.getElementById('email').value; 
+      var emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      var emailErr = document.getElementById("email-err");
+      if(signinEmail.match(emailReg)){
+         signinForm.classList.add("valid");
+         signinForm.classList.remove("invalid");
+         emailErr.innerHTML = "Your email address is valid"
+         emailErr.style.color = "#00ff00"
+        }
+      else{
+        signinForm.classList.remove("valid");
+         signinForm.classList.add("invalid");
+         emailErr.innerHTML = "Your email address is invalid"
+         emailErr.style.color = "#ff0000";
+        }
+        if(signinEmail ==""){
+        signinForm.classList.remove("valid");
+        signinForm.classList.remove("invalid");
+         emailErr.innerHTML = ""
+         emailErr.style.color = "#00ff00";
+        }
+       
+     }
+    
+
+function passValidation(){
+      var signinForm = document.getElementById("Sform");
+      var pass =document.getElementById("password").value;
+      var passReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+        var passErr = document.getElementById("pass-err");
+          
+     
+      if(pass.match(passReg)){
+         signinForm.classList.add("valid");
+         signinForm.classList.remove("invalid");
+         passErr.innerHTML = "Your Password is valid"
+         passErr.style.color = "#00ff00"
+        }
+      else{
+        signinForm.classList.remove("valid");
+        signinForm.classList.add("invalid");
+         passErr.innerHTML = "Password should contain atleast one uppercase ,one lowercase,a digit and a symbol and between 8-15 characters"
+         passErr.style.color = "#ff0000";
+        }
+        if(pass ==""){
+        signinForm.classList.remove("valid");
+        signinForm.classList.remove("invalid");
+         passErr.innerHTML = ""
+         passErr.style.color = "#00ff00";
+        }
+       }
+
     </script>
   </body>
 </html>

@@ -1,10 +1,11 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
     <title>Register</title>
-    <link rel="stylesheet" href="index.css" />
-   <!--  <meta name="google-signin-client_id" content="582697884592-61hpjj2b662itvjleuk5h84737nntc7m.apps.googleusercontent.com"> -->
+     <link  href="css/index.css" rel="stylesheet"/>
     <link
-      rel="stylesheet"
+    rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <script
@@ -41,12 +42,11 @@
                 id="email"
                 name="email"
                 placeholder="Enter your email"
-                onkeydown="emailValidation()"
+                onkeydown="emailValidation(  document.getElementById('Sform'),document.getElementById('email-err') ,  document.getElementById('email').value)"
                 autocomplete="off"
               />
             </div>
             <span class="error" id="email-err"></span>
-
           </p>
           <p>
             <label for="password">Password</label>
@@ -58,7 +58,7 @@
                 name="password"
                 placeholder="Enter a password"
                 autocomplete="off"
-                onkeydown="passValidation()"
+                onkeydown=" passValidation(document.getElementById('Sform'),document.getElementById('pass-err'),document.getElementById('password').value)"
 
               />
             </div>
@@ -75,7 +75,7 @@
 
       <div id="login_form" class="display">
         <h1>Login</h1>
-        <form method="POST" >
+        <form method="POST" id="Lform">
           <p>
             <label for="login-email">Email</label>
             <div class="input_bar">
@@ -85,9 +85,10 @@
                 id="login-email"
                 name="login-email"
                 placeholder="Enter your email"
-                
-              />
+                onkeydown="emailValidation(  document.getElementById('Lform'),document.getElementById('emailerr'), document.getElementById('login-email').value)"
+               />
             </div>
+            <span class="error" id="emailerr"></span>
           </p>
           <p>
             <label for="login-password">Password</label>
@@ -98,8 +99,10 @@
                 id="login-password"
                 name="login-password"
                 placeholder="Enter Password "
+                onkeydown="passValidation(document.getElementById('Lform'),document.getElementById('passerr'),document.getElementById('login-password').value)"
               />
             </div>
+            <span class="error" id="passerr"></span>
           </p>
           <input type="submit" value="Login" class="buttons">
           
@@ -115,9 +118,8 @@
     
    <!--  <script src="https://apis.google.com/js/platform.js" async defer></script> -->
     <script>
-     /*  var CLientId ="582697884592-61hpjj2b662itvjleuk5h84737nntc7m.apps.googleusercontent.com"
-      var CLientSecret ="M0VqY9XplRV1SmeG6FfcOBV_" */
-      function toggleForm(){
+   
+    function toggleForm(){
         var loginForm =document.getElementById("login_form");
         var signinForm =document.getElementById("signin_form");
 
@@ -130,7 +132,7 @@
          loginForm.classList.toggle("display")
         }
       }
-function validate(){
+    function validate(){
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
     var pass = document.getElementById("password").value;
@@ -138,15 +140,13 @@ function validate(){
      if(name=="" || email=="" || pass==""){
        alert("Please fill all the fields")
       }else{
-       alert("succesfull")
+       window.location.href = "Editor.html"
       }
 } 
- function emailValidation(){
-      var signinForm = document.getElementById("Sform");
-      var signinEmail=document.getElementById('email').value; 
+    function emailValidation(signinForm , emailErr ,inputValue){
       var emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-      var emailErr = document.getElementById("email-err");
-      if(signinEmail.match(emailReg)){
+      
+      if(inputValue.match(emailReg)){
          signinForm.classList.add("valid");
          signinForm.classList.remove("invalid");
          emailErr.innerHTML = "Your email address is valid"
@@ -158,7 +158,7 @@ function validate(){
          emailErr.innerHTML = "Your email address is invalid"
          emailErr.style.color = "#ff0000";
         }
-        if(signinEmail ==""){
+        if(inputValue ==""){
         signinForm.classList.remove("valid");
         signinForm.classList.remove("invalid");
          emailErr.innerHTML = ""
@@ -166,30 +166,25 @@ function validate(){
         }
        
      }
-    
+    function passValidation(loginForm,passErr,inputValue){
+      var passReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,12}$/;
 
-function passValidation(){
-      var signinForm = document.getElementById("Sform");
-      var pass =document.getElementById("password").value;
-      var passReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-        var passErr = document.getElementById("pass-err");
-          
-     
-      if(pass.match(passReg)){
-         signinForm.classList.add("valid");
-         signinForm.classList.remove("invalid");
+
+        if(inputValue.match(passReg)){
+         loginForm.classList.add("valid");
+         loginForm.classList.remove("invalid");
          passErr.innerHTML = "Your Password is valid"
          passErr.style.color = "#00ff00"
         }
       else{
-        signinForm.classList.remove("valid");
-        signinForm.classList.add("invalid");
-         passErr.innerHTML = "Password should contain atleast one uppercase ,one lowercase,a digit and a symbol and between 8-15 characters"
+        loginForm.classList.remove("valid");
+        loginForm.classList.add("invalid");
+         passErr.innerHTML = "Password should contain mix of uppercase , lowercase, digits and  symbols and between 8-15 characters"
          passErr.style.color = "#ff0000";
         }
-        if(pass ==""){
-        signinForm.classList.remove("valid");
-        signinForm.classList.remove("invalid");
+        if(inputValue ==""){
+        loginForm.classList.remove("valid");
+        loginForm.classList.remove("invalid");
          passErr.innerHTML = ""
          passErr.style.color = "#00ff00";
         }

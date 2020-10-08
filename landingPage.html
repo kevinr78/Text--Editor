@@ -2,22 +2,31 @@
 <html>
   <head>
     <link rel="stylesheet" href="css/landingpage.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/0000f17b81.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Welcome</title>
   </head>
   <style></style>
-  <body>
-    <section class="intro">
+  <body >
+    <section  class="intro">
       <div class="intro-text">
         <span
           >Welcome To <br />
-          Code-Blocks!
+          Code-Blocks! <br />
         </span>
+        <p>A free online text editor</p>
       </div>
     </section>
     <section class="how-to-section">
-      <h1>How to use</h1>
-
-      <div class="instructions">
+     <!--  <h2>HOW TO USE</h2> -->
+      <div class="instructions " >
         <div class="instruction-steps">
           <div class="instruction-info">
             <p>Step 1</p>
@@ -72,18 +81,75 @@
         </div>
       </div>
     </section>
-    <section class="how-to-video">
-      <!-- <div class="how-to-video-text">
-        <p>For more guidelines please refere the video shown </p>
-      </div> -->
-      <div>
-        <iframe
-          src="https://www.youtube.com/embed/1OsSaBuIj_g"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+    <section class="how-to-video-section test">
+      <div class="how-to-video">
+        <video src="test-video.mp4" controls></video>
+      </div>
+      <div class="how-to-video-text">
+        <span>For more guidelines please refer the video shown</span>
       </div>
     </section>
+    <section class="redirect-section">
+      <span>Let's get started !</span>
+      <div class="register-links">
+        <a href="index.html"></a> <button>
+          <i class="fas fa-users"></i>
+         Login
+        </button>
+      </a>
+        <h2>OR</h2>
+       <a href="index.html">
+        <button>
+          <i class="fas fa-sign-in-alt"></i>
+         Sign-Up
+        </button>
+      </a>
+      </div>
+      <div class="footer-text">
+      <h2>Devloped by David ,Kevin and Tanya Rodrigues</h2>
+    </div> 
+    </section>
+
+
+
+    <script>
+    /*   var scrollpos = window.scrollY; // window scroll position
+    var wh = window.innerHeight; // as soon as element touches bottom with offset event starts
+    var element = document.querySelector(".how-to-video-section"); //element
+window.addEventListener('scroll', function(){ 
+  
+}); */
+/* 
+function animateOnScroll(target, triggerPosition, activeClass, reversible = false){
+  let targetEl = document.querySelectorAll(target);
+  targetEl.forEach(el=>{
+    let targetElTop = el.getBoundingClientRect().top;
+    let windowHeight = window.innerHeight;
+    if (targetElTop <= windowHeight * triggerPosition) {
+      el.classList.add(activeClass);
+    }
+    else if (targetElTop >= windowHeight && reversible) {
+      el.classList.remove(activeClass);
+    }
+  })
+}
+window.addEventListenter('scroll', ()=>{
+animateOnScroll('test', 0.8, 'fade-in', true)
+})
+
+ */
+
+ function scroll(){
+      var text =document.querySelector(".intro-text")
+      var height = text.getBoundingClientRect().top;
+      var windoe = window.innerHeight;
+
+      if(height< windoe){
+        text.classList.add('intr0-appear')
+      }
+ }
+
+ window.addEventListener('scroll' , scroll);
+    </script>
   </body>
 </html>

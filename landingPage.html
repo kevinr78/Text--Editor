@@ -16,7 +16,7 @@
   <style></style>
   <body >
     <section  class="intro">
-      <div class="intro-text">
+      <div class="intro-text transition">
         <span
           >Welcome To <br />
           Code-Blocks! <br />
@@ -81,17 +81,18 @@
         </div>
       </div>
     </section>
-    <section class="how-to-video-section test">
-      <div class="how-to-video">
-        <video src="test-video.mp4" controls></video>
-      </div>
+    <section class="how-to-video-section">
+     
       <div class="how-to-video-text">
         <span>For more guidelines please refer the video shown</span>
+      </div>
+      <div class="how-to-video transition">
+        <video src="test-video.mp4" controls></video>
       </div>
     </section>
     <section class="redirect-section">
       <span>Let's get started !</span>
-      <div class="register-links">
+      <div class="register-links transition">
         <a href="index.html"></a> <button>
           <i class="fas fa-users"></i>
          Login
@@ -113,17 +114,24 @@
 
 
     <script>
-    /*   var scrollpos = window.scrollY; // window scroll position
-    var wh = window.innerHeight; // as soon as element touches bottom with offset event starts
-    var element = document.querySelector(".how-to-video-section"); //element
-window.addEventListener('scroll', function(){ 
-  
-}); */
+      
+ /* function videoSectionAnimation(){
+    var targetEL =document.querySelector(".how-to-video")
+    var targetElPosition = targetEL.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight/2.5;
+    
+    if(targetElPosition<windowHeight){
+      targetEL.classList.add('animate-video') 
+    }}
+
+    window.addEventListener('scroll' , videoSectionAnimation)
+
+ */
 /* 
-function animateOnScroll(target, triggerPosition, activeClass, reversible = false){
-  let targetEl = document.querySelectorAll(target);
-  targetEl.forEach(el=>{
-    let targetElTop = el.getBoundingClientRect().top;
+function animateOnScroll( triggerPosition, activeClass, reversible = false){
+  
+  
+    let targetElTop =  getBoundingClientRect().top;
     let windowHeight = window.innerHeight;
     if (targetElTop <= windowHeight * triggerPosition) {
       el.classList.add(activeClass);
@@ -131,25 +139,38 @@ function animateOnScroll(target, triggerPosition, activeClass, reversible = fals
     else if (targetElTop >= windowHeight && reversible) {
       el.classList.remove(activeClass);
     }
-  })
 }
-window.addEventListenter('scroll', ()=>{
-animateOnScroll('test', 0.8, 'fade-in', true)
-})
+
+let targetEl = document.querySelectorAll(".transition");
+
+  window.addEventListenter('scroll', animateOnScroll(targetEl ,  0.8, 'transition-animation', true))
+
 
  */
 
- function scroll(){
-      var text =document.querySelector(".intro-text")
-      var height = text.getBoundingClientRect().top;
-      var windoe = window.innerHeight;
+    var targetEl=  document.querySelectorAll('.transition');
+    for(var i = 0 ; i<targetEl.length; i++){
+        window.addEventListener('scroll' , animateOnScroll)
+        }
 
-      if(height< windoe){
-        text.classList.add('intr0-appear')
+    function animateOnScroll(){
+      var targetEl=  document.querySelectorAll('.transition');
+      targetEl.forEach((el)=>{
+          var  targetElHeight = el.getBoundingClientRect().top;
+          var windowHeight = window.innerHeight/2
+          if(targetElHeight <= windowHeight){
+              el.classList.add('transition-animation')
+          }
+        })
       }
- }
+      
+      
+ function introTextAnimation(){
+      var targetEL =document.querySelectorAll(".transition")
+      targetEL[0].classList.add('transition-animation')
+    }
+  window.addEventListener('load' , introTextAnimation);
 
- window.addEventListener('scroll' , scroll);
     </script>
   </body>
 </html>

@@ -14,6 +14,12 @@ section {
   height: 100vh;
   display: flex;
 }
+span {
+  font-weight: bolder;
+  display: flex;
+}
+
+/* Introduction Section */
 .intro {
   background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20190828/pngtree-top-view-background-of-desktop-with-electronic-devices-and-laptop-image_307721.jpg);
   color: #ffffff;
@@ -23,21 +29,20 @@ section {
   background-size: cover;
 }
 
-span {
-  font-weight: bolder;
-  display: flex;
+.transition {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s all ease-in-out;
 }
+.transition-animation {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
 .intro-text {
   position: absolute;
   top: 30%;
   left: 15%;
-  opacity: 1;
-  transform: translateY(40px);
-  transition: 1s all ease-in-out;
-}
-.intro-appear {
-  opacity: 1;
-  transform: translateY(0px);
 }
 .intro-text span {
   font-size: 60px;
@@ -45,7 +50,9 @@ span {
 .intro-text p {
   font-size: 25px;
 }
+/* INTRODUCTION ENDS */
 
+/* INSTRUCTION SECTION START */
 .how-to-section {
   height: 110vh;
   background-color: #ffffff;
@@ -54,7 +61,6 @@ span {
   position: relative;
   left: 700px;
 }
-
 .instructions {
   max-width: 800px;
   height: 650px;
@@ -93,6 +99,10 @@ span {
   height: 100px;
   margin-left: 10px;
 }
+
+/*  INSTRUCTION SECTION START */
+
+/*   VIDEO SECTION START */
 .how-to-video-section {
   background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20190828/pngtree-top-view-background-of-desktop-with-electronic-devices-and-laptop-image_307721.jpg);
   background-attachment: fixed;
@@ -100,6 +110,7 @@ span {
   background-repeat: no-repeat;
   background-size: cover;
   color: #ffffff;
+  overflow-x: hidden;
 }
 .how-to-video {
   width: 50%;
@@ -110,7 +121,7 @@ span {
 }
 
 .how-to-video-text {
-  width: 50%;
+  width: 40%;
 }
 .how-to-video-text span {
   font-size: 50px;
@@ -118,49 +129,7 @@ span {
   margin-left: 80px;
   margin-top: 160px;
 }
-@media screen and (max-width: 800px) {
-  .intro-text span {
-    font-size: 50px;
-  }
-  .intro-text p {
-    font-size: 25px;
-  }
-  .how-to-section {
-    height: auto;
-  }
-  .instructions {
-    height: auto;
-  }
-  .instruction-steps {
-    height: 150px;
-  }
-  .how-to-video-section {
-    flex-direction: column;
-    height: auto;
-  }
-  .how-to-video {
-    width: 100%;
-  }
-  .how-to-video video {
-    width: 80%;
-  }
-  .how-to-video-text span {
-    margin-top: 10px;
-    margin-left: 150px;
-    font-size: 40px;
-  }
-  .how-to-video-text {
-    width: 100%;
-  }
-  .register-links {
-    flex-direction: column;
-  }
-}
-.redirect-section {
-  background-color: #ffffff;
-  flex-direction: column;
-  color: #68abb3;
-}
+/*    GOTO FORM SECTION START */
 i {
   color: #ffffff;
 }
@@ -188,7 +157,7 @@ button:hover {
   border: 2px solid #68abb3;
   color: #68abb3;
 }
-i:hover {
+button:hover i {
   color: #68abb3;
 }
 .redirect-section span {
@@ -209,4 +178,49 @@ i:hover {
 .footer-text {
   max-width: 600px;
   margin: 0 auto;
+}
+/*  GOTO FORM SECTION ENDS  */
+
+@media screen and (max-width: 800px) {
+  .intro-text span {
+    font-size: 50px;
+  }
+  .intro-text p {
+    font-size: 25px;
+  }
+  .how-to-section {
+    height: auto;
+  }
+  .instructions {
+    height: auto;
+  }
+  .instruction-steps {
+    height: 150px;
+  }
+  .how-to-video-section {
+    flex-direction: column;
+    height: auto;
+  }
+  .how-to-video {
+    width: 100%;
+  }
+  .how-to-video video {
+    width: 80%;
+  }
+  .how-to-video-text span {
+    margin-top: 30px;
+    margin-left: 150px;
+    font-size: 40px;
+  }
+  .how-to-video-text {
+    width: 100%;
+  }
+  .register-links {
+    flex-direction: column;
+  }
+}
+.redirect-section {
+  background-color: #ffffff;
+  flex-direction: column;
+  color: #68abb3;
 }

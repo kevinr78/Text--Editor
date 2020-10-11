@@ -43,6 +43,7 @@ span {
   position: absolute;
   top: 30%;
   left: 15%;
+  background-color: springgreen;
 }
 .intro-text span {
   font-size: 60px;
@@ -113,7 +114,6 @@ span {
   background-repeat: no-repeat;
   background-size: cover;
   color: #ffffff;
-  overflow-x: hidden;
 }
 .how-to-video {
   width: 50%;
@@ -143,7 +143,6 @@ button {
   border: none;
   outline: none;
   border-radius: 15px;
-  overflow: hidden;
 
   font-size: 30px;
   background-color: #68abb3;

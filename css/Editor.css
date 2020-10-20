@@ -16,7 +16,6 @@ nav {
   margin: auto;
   background-color: #00b4d8;
   justify-content: space-around;
-  /* align-items: center; */
 }
 .logo-container,
 .menu-button,
@@ -50,7 +49,6 @@ nav {
   height: 28px;
   width: 100%;
   padding-top: 8px;
-
   text-align: center;
 }
 .nav-link:not(:last-child) {
@@ -101,7 +99,6 @@ textarea {
   height: 610px;
   width: 90%;
   outline: none;
-  /*  overflow-y: hidden; */
 }
 
 .hidden {
@@ -137,104 +134,3 @@ textarea {
 .menu-button:hover .menu-button-dropdown {
   display: block;
 }
-@media screen and (max-width: 912px) {
-}
-
-/* nav {
-  height: 8vh;
-  background-color: #1a535c;
-  max-width: 100%;
-  text-align: center;
-}
-.nav-links {
-  margin: 0px;
-  padding-top: 10px;
-  display: flex;
-  list-style: none;
-  justify-content: space-around;
-}
-.nav-links a {
-  text-decoration: none;
-}
-.btnContainer {
-  height: 32px;
-  width: 290px;
-  border-radius: 5px;
-  justify-content: center;
-  background-color: white;
-}
-
-.btnTab {
-  padding: 5px 3px 0px;
-  margin-top: 2px;
-  display: inline-block;
-  border-right: 1px solid grey;
-  height: 24px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #1a535c;
-}
-.Obtn {
-  border-right: none;
-}
-#title > li > a > h2 {
-  position: relative;
-  bottom: 15px;
-  color: #f7fff7;
-}
-
-.btnTab:hover,
-.active {
-  background-color: lightblue;
-}
-.nav-links > div > a > h2 {
-  color: red;
-}
-
-
-.dropdown {
-  position: relative;
-  right: 100px;
-  height: 100px;
-}
-.dropdown button {
-  width: 80px;
-  height: 32px;
-  border-radius: 6px;
-  background-color: #ffffff;
-  border: none;
-  color: #1a535c;
-  font-weight: bold;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
-  z-index: 1;
-}
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-.dropdown-content a:hover {
-  border: 3px solid #1a535c;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-}
-
-@media screen and (max-width: 1200px) {
-  .Panels {
-    width: 50%;
-  }
-}
- */

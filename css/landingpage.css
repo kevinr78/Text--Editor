@@ -43,7 +43,6 @@ span {
   position: absolute;
   top: 30%;
   left: 15%;
-  background-color: springgreen;
 }
 .intro-text span {
   font-size: 60px;
@@ -55,7 +54,7 @@ span {
 
 /* INSTRUCTION SECTION START */
 .how-to-section {
-  height: 110vh;
+  height: 120vh;
   background-color: #ffffff;
 }
 

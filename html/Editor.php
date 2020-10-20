@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Web Compiler</title>
-    <link rel="stylesheet" href="css/Editor.css" />
+    <link rel="stylesheet" href="../css/Editor.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -19,8 +19,8 @@
   <body>
     <nav>
       <div class="logo-container">
-        <img src="valid.png" alt="Logo" />
-        <h3>Code Editor</h3>
+        
+        <h3>Code-Blocks</h3>
       </div>
       <div class="toggle-panel-wrapper">
         <ul class="nav-links">
@@ -62,52 +62,6 @@
       </div>
     </main>
 
-    <!-- <nav>
-      <ul class="nav-links">
-        <div id="title" style="margin-right: auto">
-          <li>
-            <a href="#"><h2>Code Editor</h2> </a>
-          </li>
-        </div>
-
-        <div class="btnContainer" style="margin: 0 auto">
-          <div onclick="togglePanel(this)" id="Html" class="active btnTab Hbtn">
-            HTML
-          </div>
-          <div onclick="togglePanel(this)" id="Css" class="btnTab Cbtn">
-            CSS
-          </div>
-
-          <div onclick="togglePanel(this)" id="Js" class="btnTab Jbtn">
-            JavaScript
-          </div>
-
-          <div
-            onclick="togglePanel(this)"
-            id="Output"
-            class="active btnTab Obtn"
-          >
-            OUTPUT
-          </div>
-        </div>
-
-        <div class="dropdown" style="margin-left: auto">
-          <button type="button">
-            <i
-              style="margin-right: 3px; color: #1a535c"
-              class="fas fa-bars fa-lg"
-            ></i>
-            Menu
-          </button>
-          <div class="dropdown-content">
-            <a href="#">Save Code</a>
-            <a href="#">Logout</a>
-          </div>
-        </div>
-      </ul>
-    </nav>
- -->
-
     <script type="text/javascript">
       function togglePanel(x) {
         var PanelName = x.id + "Panel";
@@ -139,27 +93,6 @@
       }
 
       compile();
-      /*remark is text area id
- function  myfunction() {
-if(document.getElementById('remark').value === ''){
-document.getElementById('remark').value +=1;
-}
-};
-
-document.getElementById("remark").addEventListener('keyup',function(event){
-
-
-if(event.which == '13'){
-var elm = document.getElementById("remark");
-var lines = elm.value.split('\n');
-var numbers = "";
-for(var i=0; i<lines.length; i++)
-{
-numbers = i+1;}
-document.getElementById('remark').value +=numbers;
-}
-
-});*/
     </script>
   </body>
 </html>

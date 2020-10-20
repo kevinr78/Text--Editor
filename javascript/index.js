@@ -1,15 +1,3 @@
-function validate() {
-  var name = document.getElementById("name").value;
-  var email = document.getElementById("email").value;
-  var pass = document.getElementById("password").value;
-
-  if (name == "" || email == "" || pass == "") {
-    alert("Please fill all the fields");
-  } else {
-    window.location.href = "/html/Editor.html";
-  }
-}
-
 function emailValidation(FormName, emailErr, inputValue) {
   var emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -24,6 +12,7 @@ function emailValidation(FormName, emailErr, inputValue) {
     emailErr.innerHTML = "Your email address is invalid";
     emailErr.style.color = "#ff0000";
   }
+
   if (inputValue == "") {
     FormName.classList.remove("valid");
     FormName.classList.remove("invalid");

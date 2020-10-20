@@ -1,10 +1,13 @@
 {
   "folders": [
-	{
-		"path": "."
-	}
-],
+    {
+      "path": "."
+    },
+    {
+      "path": "..\\products"
+    }
+  ],
   "settings": {
-    "liveServer.settings.multiRootWorkspaceName": "ISSB Website"
+    "liveServer.settings.multiRootWorkspaceName": "textEditor"
   }
 }

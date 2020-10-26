@@ -1,5 +1,10 @@
 <?php
+session_start();
+ $error = "";
 
+ if(isset($_SESSION['id']) or isset($_COOKIE['id'])){
+   header("Location:Editor.php");
+ }
 include('DBconnection.php');
 if(isset($_POST['email'])){
   $email = mysqli_real_escape_string($connection,$_POST['email']);
@@ -8,25 +13,34 @@ if(isset($_POST['password'])){
   $password = mysqli_real_escape_string($connection,$_POST['password']);
 }
 
-if($_SERVER['REQUEST_METHOD']){
-    if(empty($email)&&empty($password)){
-        $error = "Please fill all the fields";
-    }else{
-        $query = 'SELECT * FROM `user details` WHERE ` email` = "'.$email.'"';
-        if(mysqli_query($connection, $query)){
-          echo "Succes";
-        }else{
-          echo "fail";
-        }
-    }
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      if(empty($email)&&empty($password)){
+        $error .= "Please fill all the fields";
+      }
+      else{
+        $query = 'SELECT * FROM `users details` WHERE `email` = "'.$email.'"';
+
+         $result = mysqli_query($connection , $query);
+         $row = mysqli_fetch_row($result);
+         
+         if(isset($row)){
+            if(password_verify($password, $row[3])){
+                if(isset($_POST['login-checkbox'])){
+                  setcookie('id', mysqli_insert_id($connection),time()+60*60*24);
+                }
+              $_SESSION['id'] = mysqli_insert_id($connection);
+              header("Location:Editor.php");
+            }else{
+              $error .="Password/email is incorrect";
+            }
+         }else{
+            $error .="That password/email does not exist";
+         }
+      }
   }
 
 
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +50,7 @@ if($_SERVER['REQUEST_METHOD']){
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    z
+    
     <script
       src="https://kit.fontawesome.com/0000f17b81.js"
       crossorigin="anonymous"
@@ -45,8 +59,7 @@ if($_SERVER['REQUEST_METHOD']){
 
   <body>
     
-    <div class="login-form-container animate" id="modal">
-      
+    <div class="login-form-container animate" >
       <div class="form-heading">
         <span>Login </span>
       </div>
@@ -57,7 +70,7 @@ if($_SERVER['REQUEST_METHOD']){
             type="email"
             id="email"
             name = email
-            onkeydown=" emailValidation(document.querySelector('.login-form') , document.querySelector('#email-err'), document.querySelector('#email').value)"
+           
             autocomplete="off"
           />
           <span class="error" id="email-err"></span>
@@ -72,16 +85,33 @@ if($_SERVER['REQUEST_METHOD']){
             type="password"
             id="password"
             name = "password"
-            onkeydown="passValidation(document.querySelector('.login-form') , document.querySelector('#pass-err'), document.querySelector('#password').value)"
+           
           />
           <span class="error" id="pass-err"></span>
         </div>
 
-        <button onclick="validate()">Login</button>
-      </form>
-      <span class="error" style="color:red;margin-top:20px;"><?php echo $error; ?></span>
-    </div>
+        <div id ="login-checkbox">
+          <input type="checkbox" name="login-checkbox" value=1>
+          <span>Stay logged in</span>
+        </div>
 
+        <button onclick="validate()">Login</button>
+
+      </form>
+
+      <span class="error" style="color:red;margin-top:20px; ">
+      <?php 
+      if($error!="")
+      echo $error;
+       ?>
+       </span>
+
+    </div>
     <script src="../javascript/index.js"></script>
   </body>
 </html>
+
+<!-- 
+onkeydown=" emailValidation(document.querySelector('.login-form') , document.querySelector('#email-err'), document.querySelector('#email').value)" -->
+<!-- 
+onkeydown="passValidation(document.querySelector('.login-form') , document.querySelector('#pass-err'), document.querySelector('#password').value)" -->

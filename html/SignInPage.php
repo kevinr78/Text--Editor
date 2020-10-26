@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include('DBConnection.php');
 $error= "";
 if(isset($_POST['name'])){
@@ -17,38 +18,27 @@ $Hashedpassword = password_hash($password , PASSWORD_DEFAULT);
 if($_SERVER['REQUEST_METHOD']== 'POST'){
 
     if( empty($name) || empty($email) ||empty($password)){
-      $error = "Please fill all the fields";
+      $error .= "Please fill all the fields";
       
     }
     else
     {
-      $query = 'SELECT id FROM `users details` WHERE `email` ="'.mysqli_real_escape_string($connection, $_POST['email']).'" LIMIT 1';
-
+      $query = 'SELECT id FROM `users details` WHERE `email` ="'.$email.'" LIMIT 1';
       $result =mysqli_query($connection, $query);
-     
-     
+      
       if(mysqli_num_rows($result)>0 ){
-        echo "Email already taken"; 
+        $error .= "Email already taken"; 
       }
       else{
-        
-        $query = 'INSERT INTO`users details`(`name`,`email`,`password`) VALUES (
-        "'.mysqli_real_escape_string($connection, $_POST['name']).'" ,
-         "'.mysqli_real_escape_string($connection, $_POST['email']).'","'.mysqli_real_escape_string($connection, $Hashedpassword).'") ';
-   
-         if(mysqli_query($connection, $query)){
-          $id = mysqli_insert_id($link);
-          $_SESSION['id'] = $id;
-           $cookie  =setcookie("id", $id, time() + 60*60*24);
-            header('Location:Editor.html');
-         }else{
-             echo "Error:Please try again";
-         }
+        $query = 'INSERT INTO`users details`(`name`,`email`,`password`)   VALUES ("'.$name.'" , "'.$email.'","'.    $Hashedpassword.'") ';
+          if(mysqli_query($connection, $query)){
+            $_SESSION['id'] = mysqli_insert_id($connection);
+            header('Location:Editor.php');
+          }else{
+            $error .="Error:Please try again";
+          }
       }
     }
-  }
-  else{
-    echo "There was a error please try again ";
   }
 
 ?>

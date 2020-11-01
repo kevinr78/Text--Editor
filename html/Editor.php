@@ -1,25 +1,6 @@
-<!-- <?php
+<?php
 session_start();
-
-if(isset($_SESSION['id']) OR isset($_COOKIE['id'])){
-  include('DBconnection.php');
-  $html = $_POST['html'] ;
-  $css = $_POST['css'];
-  $javascript =$_POST['javascript'];
-  if(isset($_POST['save-code'])){
-    if(!empty($html)){
-        $query = 'UPDATE `users details` SET `HTML`="'.$html.'" WHERE `id`="'.$_SESSION['id'].'"';
-        $result= mysqli_query($connection, $query);
-        if(!$result){
-          echo "fail";
-        }
-    }
-  }  
-
-}
-
-
-?> -->
+?>
 
 <!DOCTYPE html>
 <html>
@@ -64,16 +45,19 @@ if(isset($_SESSION['id']) OR isset($_COOKIE['id'])){
           <i class="fas fa-bars fa-lg" style="margin-right: 3px"></i>Menu
         </button>
         <div class="menu-button-dropdown">
-          <button id="save-code-btn" name="save-code">Save Code</button>
+          <!-- <button onclick="SaveCode()" type="submit" id="save-code-btn" name="save-code">
+            Save Code
+          </button> -->
           <a href="logout.php">Logout</a>
         </div>
       </div>
     </nav>
 
     <main>
-      <form action="" method="post">
+    <form id="myform" method="post">
         <div id="bodyContainer">
-          <div class="Panels" id="HtmlPanel">
+        
+          <div class="Panels" id="HtmlPanel" >
             <textarea
               id="html"
               name="html"
@@ -94,23 +78,28 @@ if(isset($_SESSION['id']) OR isset($_COOKIE['id'])){
               placeholder=" ENTER JAVASCRIPT HERE"
             ></textarea>
           </div>
+          
           <iframe class="Panels" id="OutputPanel" placeholder="Output"></iframe>
+         
         </div>
-      </form>
+        </form>
     </main>
 
     <script type="text/javascript">
+    var html = document.getElementById("html");
+    var css = document.getElementById("css");
+    var js = document.getElementById("js");
+    
       function togglePanel(x) {
         var PanelName = x.id + "Panel";
         x.classList.toggle("active");
         var mainPanel = document.getElementById(PanelName);
         mainPanel.classList.toggle("hidden");
       }
+      
 
-      function compile() {
-        var html = document.getElementById("html");
-        var css = document.getElementById("css");
-        var js = document.getElementById("js");
+    
+      function compile(html, css, js) {
         var code = document.getElementById("OutputPanel").contentWindow
           .document;
 
@@ -129,14 +118,33 @@ if(isset($_SESSION['id']) OR isset($_COOKIE['id'])){
         };
       }
 
-      compile();
+      compile(html, css, js);
 
-      document.getELementById("save-code-btn").addEventListener("click", () => {
-        var xhttp = new XMLHttpRequest();
 
-        xhttp.open("POST", "SaveCode.php", true);
-        xhttp.send();
-      });
+ /*      function SaveCode(){
+        const request = new XMLHttpRequest();
+        
+        const requestData = {
+        html: document.getElementById("html").value,
+        css: document.getElementById("css").value,
+        js: document.getElementById("js").value,
+      };
+    
+     request.onreadystatechange = function() {
+        // Check if the request is compete and was successful
+        if(this.readyState === 4 && this.status === 200) {
+           console.log(this.responseText);
+        }
+    }; 
+        request.open("post", "SaveCode.php",true);
+        request.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+        request.send("js="+requestData.js+"html="+requestData.html);  
+
+      
+      } */
     </script>
   </body>
 </html>
